@@ -101,26 +101,26 @@ class WikiJpmozTemplate extends QuickTemplate {
 
 <div class="box" id="headBarWrapper">
   <div class="headBar" id="headbar_inner">
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_fileMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_fileMenu');">ƒƒjƒ…[</a>
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_editMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_editMenu');">•ÒW</a>
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_viewMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_viewMenu');">•\Ž¦</a>
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_toolsMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_toolsMenu');">ƒc[ƒ‹</a>
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_helpMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_helpMenu');">ƒwƒ‹ƒv</a>
-    <a class="headmenuButton" href="http://atwiki.jp/l/" target="_blank">V‹K</a>
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_fileMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_fileMenu');">ãƒ¡ãƒ‹ãƒ¥ãƒ¼</a>
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_editMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_editMenu');">ç·¨é›†</a>
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_viewMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_viewMenu');">è¡¨ç¤º</a>
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_toolsMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_toolsMenu');">ãƒ„ãƒ¼ãƒ«</a>
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_helpMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_helpMenu');">ãƒ˜ãƒ«ãƒ—</a>
+    <a class="headmenuButton" href="http://atwiki.jp/l/" target="_blank">æ–°è¦</a>
     <form style="margin: 0pt ! important; padding: 0pt ! important; display: inline ! important; vertical-align: bottom ! important; position: absolute ! important;" method="get" action="http://www16.atwiki.jp/jpmozwiki/">
       <input name="cmd" value="search" type="hidden">
-      <input id="s" value="wiki“àŒŸõ" style="display: inline ! important; width: 90px ! important; font-size: 13px ! important; position: absolute ! important; left: 10px ! important; top: -2px ! important; padding: 1px ! important;" name="keyword" onfocus="formClear(this)" type="text">
-      <input value="ŒŸõ" style="display: inline ! important; width: 40px ! important; font-size: 12px ! important; position: absolute ! important; left: 105px ! important; top: -2px ! important; border: 1px solid rgb(187, 187, 187) ! important; background-color: rgb(232, 232, 232) ! important; padding: 1px 3px ! important;" type="submit">
+      <input id="s" value="wikiå†…æ¤œç´¢" style="display: inline ! important; width: 90px ! important; font-size: 13px ! important; position: absolute ! important; left: 10px ! important; top: -2px ! important; padding: 1px ! important;" name="keyword" onfocus="formClear(this)" type="text">
+      <input value="æ¤œç´¢" style="display: inline ! important; width: 40px ! important; font-size: 12px ! important; position: absolute ! important; left: 105px ! important; top: -2px ! important; border: 1px solid rgb(187, 187, 187) ! important; background-color: rgb(232, 232, 232) ! important; padding: 1px 3px ! important;" type="submit">
     </form>
     <div style="position: absolute; top: 4px; right: 2px;"></div>
   </div>
 
   <div style="position: absolute; top: -1px; right: 0pt; background: none repeat scroll 0% 0% transparent ! important; border: medium none ! important;" class="headBar">
     <a href="http://twitter.com/home?status=jpmozwiki%20%40%20%E3%82%A6%E3%82%A3%E3%82%AD%20-%20%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%20http://www16.atwiki.jp/jpmozwiki/%20%23atwiki" target="_blank" style="border: medium none;">
-      <img title="‚±‚Ìwiki‚É‚Â‚¢‚ÄTwitter‚Å‚Â‚Ô‚â‚­" src="jpmozwiki-style_files/tweet.png" style="border: medium none; vertical-align: top;">
+      <img title="ã“ã®wikiã«ã¤ã„ã¦Twitterã§ã¤ã¶ã‚„ã" src="jpmozwiki-style_files/tweet.png" style="border: medium none; vertical-align: top;">
     </a>
-    <a href="http://www16.atwiki.jp/jpmozwiki/contributor" title="‚±‚ÌƒEƒBƒL‚ÉŽQ‰Á" class="headmenuButton" rel="nofollow">‚±‚ÌƒEƒBƒL‚ÉŽQ‰Á</a>
-    <a href="http://www16.atwiki.jp/jpmozwiki/login/1.html" title="ƒƒOƒCƒ“" class="headmenuButton" rel="nofollow">ƒƒOƒCƒ“</a>
+    <a href="http://www16.atwiki.jp/jpmozwiki/contributor" title="ã“ã®ã‚¦ã‚£ã‚­ã«å‚åŠ " class="headmenuButton" rel="nofollow">ã“ã®ã‚¦ã‚£ã‚­ã«å‚åŠ </a>
+    <a href="http://www16.atwiki.jp/jpmozwiki/login/1.html" title="ãƒ­ã‚°ã‚¤ãƒ³" class="headmenuButton" rel="nofollow">ãƒ­ã‚°ã‚¤ãƒ³</a>
   </div>
 </div>
 
