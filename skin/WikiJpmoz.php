@@ -22,6 +22,8 @@ class SkinWikiJpmoz extends SkinTemplate {
       // Currently in testing... try 'chick/main.css'
       $out->addStyle( $wgHandheldStyle, 'handheld' );
     }
+    
+    $out->addStyle( 'wikijpmoz/menubar.css', 'screen');
 
     $out->addStyle( 'monobook/IE50Fixes.css', 'screen', 'lt IE 5.5000' );
     $out->addStyle( 'monobook/IE55Fixes.css', 'screen', 'IE 5.5000' );
@@ -51,24 +53,27 @@ class WikiJpmozTemplate extends QuickTemplate {
     // Suppress warnings to prevent notices about missing indexes in $this->data
     wfSuppressWarnings();
 
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php
+?>
+<!DOCTYPE html>
+<html lang="ja"
+  xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php
   foreach($this->data['xhtmlnamespaces'] as $tag => $ns) {
     ?>xmlns:<?php echo "{$tag}=\"{$ns}\" ";
   } ?>xml:lang="<?php $this->text('lang') ?>" lang="<?php $this->text('lang') ?>" dir="<?php $this->text('dir') ?>">
-  <head>
-    <meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
-    <?php $this->html('headlinks') ?>
-    <title><?php $this->text('pagetitle') ?></title>
-    <?php $this->html('csslinks') ?>
 
-    <!--[if lt IE 7]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script>
-    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
+  <?php $this->html('headlinks') ?>
+  <title><?php $this->text('pagetitle') ?></title>
+  <?php $this->html('csslinks') ?>
 
-    <?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
+  <!--[if lt IE 7]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script>
+  <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
 
-    <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
-    <!-- Head Scripts -->
+  <?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
+
+  <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
+  <!-- Head Scripts -->
 <?php $this->html('headscripts') ?>
 <?php  if($this->data['jsvarurl']) { ?>
     <script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl') ?>"><!-- site js --></script>
@@ -86,10 +91,39 @@ class WikiJpmozTemplate extends QuickTemplate {
     <script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
 <?php  }
     if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
-  </head>
+
+</head>
+
+
 <body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload']) { ?> onload="<?php $this->text('body_onload') ?>"<?php } ?>
  class="mediawiki <?php $this->text('dir') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">
+
+<div class="box" id="headBarWrapper">
+  <div class="headBar" id="headbar_inner">
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_fileMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_fileMenu');">メニュー</a>
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_editMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_editMenu');">編集</a>
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_viewMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_viewMenu');">表示</a>
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_toolsMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_toolsMenu');">ツール</a>
+    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_helpMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_helpMenu');">ヘルプ</a>
+    <a class="headmenuButton" href="http://atwiki.jp/l/" target="_blank">新規</a>
+    <form style="margin: 0pt ! important; padding: 0pt ! important; display: inline ! important; vertical-align: bottom ! important; position: absolute ! important;" method="get" action="http://www16.atwiki.jp/jpmozwiki/">
+      <input name="cmd" value="search" type="hidden">
+      <input id="s" value="wiki内検索" style="display: inline ! important; width: 90px ! important; font-size: 13px ! important; position: absolute ! important; left: 10px ! important; top: -2px ! important; padding: 1px ! important;" name="keyword" onfocus="formClear(this)" type="text">
+      <input value="検索" style="display: inline ! important; width: 40px ! important; font-size: 12px ! important; position: absolute ! important; left: 105px ! important; top: -2px ! important; border: 1px solid rgb(187, 187, 187) ! important; background-color: rgb(232, 232, 232) ! important; padding: 1px 3px ! important;" type="submit">
+    </form>
+    <div style="position: absolute; top: 4px; right: 2px;"></div>
+  </div>
+
+  <div style="position: absolute; top: -1px; right: 0pt; background: none repeat scroll 0% 0% transparent ! important; border: medium none ! important;" class="headBar">
+    <a href="http://twitter.com/home?status=jpmozwiki%20%40%20%E3%82%A6%E3%82%A3%E3%82%AD%20-%20%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%20http://www16.atwiki.jp/jpmozwiki/%20%23atwiki" target="_blank" style="border: medium none;">
+      <img title="このwikiについてTwitterでつぶやく" src="jpmozwiki-style_files/tweet.png" style="border: medium none; vertical-align: top;">
+    </a>
+    <a href="http://www16.atwiki.jp/jpmozwiki/contributor" title="このウィキに参加" class="headmenuButton" rel="nofollow">このウィキに参加</a>
+    <a href="http://www16.atwiki.jp/jpmozwiki/login/1.html" title="ログイン" class="headmenuButton" rel="nofollow">ログイン</a>
+  </div>
+</div>
+
   <div id="globalWrapper">
     <div id="column-content">
   <div id="content">
