@@ -160,7 +160,7 @@ class WikiJpmozTemplate extends QuickTemplate {
     }
     echo '>' . htmlspecialchars($tab['text']);
     ?></a></li>
-  <?php if (strcmp($key, "talk") == 0) {echo '<div class="menuItemSep"></div>"; }
+  <?php if (strcmp($key, "talk") == 0) {echo '<div class="menuItemSep"></div>'; }
   } ?>
 </div>
 
