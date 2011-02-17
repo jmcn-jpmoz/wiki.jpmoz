@@ -153,7 +153,7 @@ class WikiJpmozTemplate extends QuickTemplate {
     <a id="<?php echo Sanitizer::escapeId( "ca-$key" ); ?>"
       class="menuItem"
       <?php if ( $tab['class'] ) {
-        echo 'class="' . htmlspecialchars($tab['class']); } . '"';
+        echo 'class="' . htmlspecialchars($tab['class']) . '"';
       } ?>
       href="<?php echo htmlspecialchars($tab['href']); ?>"
       <?php
