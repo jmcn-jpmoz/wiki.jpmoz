@@ -164,8 +164,8 @@ class WikiJpmozTemplate extends QuickTemplate {
   } ?>
 </div>
 
-/*
 <div id="optionsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
+/*
   foreach ($this->data['personal_urls'] as $key => $item) { ?>
     <a id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"
       class="menuItem"
