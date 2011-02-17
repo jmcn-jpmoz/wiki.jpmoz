@@ -152,7 +152,7 @@ class WikiJpmozTemplate extends QuickTemplate {
     } ?>
     <a id="<?php Sanitizer::escapeId( "ca-$key" ) ?>" class="menuItem 
     <?php if( $tab['class'] ) {echo htmlspecialchars($tab['class']); } ?>"
-    href="<?php echo htmlspecialchars($tab['href']) ?>" <?php
+    href="<?php htmlspecialchars($tab['href']) ?>" <?php
     if( in_array( $action, array( 'edit', 'submit' ) )
      && in_array( $key, array( 'edit', 'watch', 'unwatch' ))) {
       echo $skin->tooltip( "ca-$key" );
