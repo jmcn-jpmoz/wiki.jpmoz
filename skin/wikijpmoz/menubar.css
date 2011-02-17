@@ -91,3 +91,10 @@ form#menuSearchform {
   vertical-align: center;
 }
 
+div.menuRight {
+  position: absolute;
+  top: -1px;
+  right: 0pt;
+  border: medium none;
+}
+
