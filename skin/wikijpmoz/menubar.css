@@ -2,8 +2,6 @@ div.menuBar,
 div.menuBar a.menuButton,
 div.menu,
 div.menu a.menuItem {
-  font-family: "MS Sans Serif", Arial, sans-serif;
-  font-size: 8pt;
   font-style: normal;
   font-weight: normal;
   color: #000000;
@@ -15,6 +13,7 @@ div.menuBar {
   border-color: #f0f0f0 #909090 #909090 #f0f0f0;
   padding: 4px 2px 4px 2px;
   text-align: left;
+  width: 100%;
 }
 
 div.menuBar a.menuButton {
