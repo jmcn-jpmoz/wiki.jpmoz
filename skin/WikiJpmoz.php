@@ -144,28 +144,32 @@ class WikiJpmozTemplate extends QuickTemplate {
 </div>
 
 
-<div id="editMenu" class="menu" onmouseover="menuMouseover(event)">
-  <?php    foreach($this->data['content_actions'] as $key => $tab) {
+<div id="editMenu" class="menu" onmouseover="menuMouseover(event)"><?php
+  foreach ($this->data['content_actions'] as $key => $tab) {
     if ((strcmp($key, "watch") == 0) || (strcmp($key, "unwatch") == 0) ||
         (strcmp($key, "varlang-0") == 0) || (strcmp($key, "print") == 0)) {
       echo '<div class="menuItemSep"></div>';
-    } ?><a id="<?php echo Sanitizer::escapeId( "ca-$key" ); ?>" class="menuItem 
-    <?php if ( $tab['class'] ) {echo htmlspecialchars($tab['class']); } ?>"
-    href="<?php echo htmlspecialchars($tab['href']); ?>" <?php
-    if( in_array( $action, array( 'edit', 'submit' ) )
-     && in_array( $key, array( 'edit', 'watch', 'unwatch' ))) {
-      echo $skin->tooltip( "ca-$key" );
-    } else {
-      echo $skin->tooltipAndAccesskey( "ca-$key" );
-    }
-    echo '>' . htmlspecialchars($tab['text']);
-    ?></a></li>
+    } ?>
+    <a id="<?php echo Sanitizer::escapeId( "ca-$key" ); ?>"
+      class="menuItem"
+      <?php if ( $tab['class'] ) {
+        echo 'class="' . htmlspecialchars($tab['class']); } . '"';
+      } ?>
+      href="<?php echo htmlspecialchars($tab['href']); ?>"
+      <?php
+        if( in_array( $action, array( 'edit', 'submit' ) )
+         && in_array( $key, array( 'edit', 'watch', 'unwatch' ))) {
+          echo $skin->tooltip( "ca-$key" );
+        } else {
+          echo $skin->tooltipAndAccesskey( "ca-$key" );
+        }
+      echo '>' . htmlspecialchars($tab['text']);
+    ?></a>
   <?php if (strcmp($key, "talk") == 0) {echo '<div class="menuItemSep"></div>'; }
   } ?>
 </div>
 
 <div id="optionsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
-/*
   foreach ($this->data['personal_urls'] as $key => $item) { ?>
     <a id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"
       class="menuItem"
@@ -217,7 +221,6 @@ class WikiJpmozTemplate extends QuickTemplate {
         ><?php $this->msg($special) ?></a>
     }
   }
-*/
   if (!empty($this->data['nav_urls']['print']['href'])) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href']) ?>"
       rel="alternate" 
