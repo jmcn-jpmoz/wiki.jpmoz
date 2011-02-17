@@ -109,7 +109,7 @@ class WikiJpmozTemplate extends QuickTemplate {
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'editMenu');"
-    onmouseover="buttonMouseover(event, 'editMenu');">Edit</a>
+    onmouseover="buttonMouseover(event, 'editMenu');">編集</a>
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'viewMenu');"
@@ -144,22 +144,32 @@ class WikiJpmozTemplate extends QuickTemplate {
 </div>
 
 
+<div id="editMenu" class="menu" onmouseover="menuMouseover(event)">
+  <?php    foreach($this->data['content_actions'] as $key => $tab) {
+    if ((strcmp($key, "watch") == 0) || (strcmp($key, "unwatch") == 0) ||
+        (strcmp($key, "varlang-0") == 0) || (strcmp($key, "print") == 0)) {
+      echo '<div class="menuItemSep"></div>"; 
+    } ?>
+    <a id="<?php Sanitizer::escapeId( "ca-$key" ) ?>" class="menuItem 
+    <?php if( $tab['class'] ) {echo htmlspecialchars($tab['class']); } ?>"
+    href="<?php echo htmlspecialchars($tab['href']) ?>" <?php
+    if( in_array( $action, array( 'edit', 'submit' ) )
+     && in_array( $key, array( 'edit', 'watch', 'unwatch' ))) {
+      echo $skin->tooltip( "ca-$key" );
+    } else {
+      echo $skin->tooltipAndAccesskey( "ca-$key" );
+    }
+    echo '>' . htmlspecialchars($tab['text']);
+    ?></a></li>
+  <?php if (strcmp($key, "talk") == 0) {echo '<div class="menuItemSep"></div>"; }
+  } ?>
+</div>
+
+
 <!--
 
 <div class="box" id="headBarWrapper">
   <div class="headBar" id="headbar_inner">
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_fileMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_fileMenu');">メニュー</a>
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_editMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_editMenu');">編集</a>
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_viewMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_viewMenu');">表示</a>
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_toolsMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_toolsMenu');">ツール</a>
-    <a class="headmenuButton" href="javascript:void(0);" onclick="return headmenuButtonClick(event, 'hb_helpMenu');" onmouseover="headmenuButtonMouseover(event, 'hb_helpMenu');">ヘルプ</a>
-    <a class="headmenuButton" href="http://atwiki.jp/l/" target="_blank">新規</a>
-    <form style="margin: 0pt ! important; padding: 0pt ! important; display: inline ! important; vertical-align: bottom ! important; position: absolute ! important;" method="get" action="http://www16.atwiki.jp/jpmozwiki/">
-      <input name="cmd" value="search" type="hidden">
-      <input id="s" value="wiki内検索" style="display: inline ! important; width: 90px ! important; font-size: 13px ! important; position: absolute ! important; left: 10px ! important; top: -2px ! important; padding: 1px ! important;" name="keyword" onfocus="formClear(this)" type="text">
-      <input value="検索" style="display: inline ! important; width: 40px ! important; font-size: 12px ! important; position: absolute ! important; left: 105px ! important; top: -2px ! important; border: 1px solid rgb(187, 187, 187) ! important; background-color: rgb(232, 232, 232) ! important; padding: 1px 3px ! important;" type="submit">
-    </form>
-    <div style="position: absolute; top: 4px; right: 2px;"></div>
   </div>
 
   <div style="position: absolute; top: -1px; right: 0pt; background: none repeat scroll 0% 0% transparent ! important; border: medium none ! important;" class="headBar">
@@ -259,34 +269,6 @@ class WikiJpmozTemplate extends QuickTemplate {
       </div>
     </div>
     <div id="column-one">
-      <div id="p-cactions" class="portlet">
-        <h5><?php $this->msg('views') ?></h5>
-        <div class="pBody">
-          <ul>
-            <?php    foreach($this->data['content_actions'] as $key => $tab) {
-              echo '
-            <li id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
-            if( $tab['class'] ) {
-              echo ' class="'.htmlspecialchars($tab['class']).'"';
-            }
-            echo'><a href="'.htmlspecialchars($tab['href']).'"';
-            # We don't want to give the watch tab an accesskey if the
-            # page is being edited, because that conflicts with the
-            # accesskey on the watch checkbox.  We also don't want to
-            # give the edit tab an accesskey, because that's fairly su-
-            # perfluous and conflicts with an accesskey (Ctrl-E) often
-            # used for editing in Safari.
-             if( in_array( $action, array( 'edit', 'submit' ) )
-             && in_array( $key, array( 'edit', 'watch', 'unwatch' ))) {
-               echo $skin->tooltip( "ca-$key" );
-             } else {
-               echo $skin->tooltipAndAccesskey( "ca-$key" );
-             }
-             echo '>'.htmlspecialchars($tab['text']).'</a></li>';
-            } ?>
-          </ul>
-        </div>
-      </div>
       <div class="portlet" id="p-personal">
         <h5><?php $this->msg('personaltools') ?></h5>
         <div class="pBody">
