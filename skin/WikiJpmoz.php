@@ -141,13 +141,13 @@ class WikiJpmozTemplate extends QuickTemplate {
     } ?>
   </form>
 
-  <div class="menuRight">
+  <span class="menuRight">
     <a href="http://twitter.com/home?status=jpmozwiki%20%40%20%E3%82%A6%E3%82%A3%E3%82%AD%20-%20%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%20http://www16.atwiki.jp/jpmozwiki/%20%23atwiki" target="_blank" style="border: medium none;">
       <img title="このwikiについてTwitterでつぶやく" src="jpmozwiki-style_files/tweet.png" style="border: medium none; vertical-align: top;">
     </a>
     <a href="http://www16.atwiki.jp/jpmozwiki/contributor" title="このウィキに参加" class="headmenuButton" rel="nofollow">このウィキに参加</a>
     <a href="http://www16.atwiki.jp/jpmozwiki/login/1.html" title="ログイン" class="headmenuButton" rel="nofollow">ログイン</a>
-  </div>
+  </span>
 </div>
 
 
