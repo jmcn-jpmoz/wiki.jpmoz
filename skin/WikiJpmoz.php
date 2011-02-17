@@ -183,16 +183,19 @@ class WikiJpmozTemplate extends QuickTemplate {
   if ($this->data['notspecialpage']) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href'])
       ?>"<?php echo $this->skin->tooltipAndAccesskey('t-whatlinkshere') ?>
+      class="menuItem"
       ><?php $this->msg('whatlinkshere') ?></a><?php
     if( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
       <a href="<?php echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href'])
         ?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>
+        class="menuItem"
         ><?php $this->msg('recentchangeslinked') ?></a><?php
     }
   }
   if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href'])
       ?>"<?php echo $this->skin->tooltipAndAccesskey('t-trackbacklink') ?>
+      class="menuItem"
       ><?php $this->msg('trackbacklink') ?></a><?php
   }
   if($this->data['feeds']) { 
@@ -201,6 +204,7 @@ class WikiJpmozTemplate extends QuickTemplate {
           href="<?php echo htmlspecialchars($feed['href']) ?>" rel="alternate" 
           type="application/<?php echo $key ?>+xml" class="feedlink"
           <?php echo $this->skin->tooltipAndAccesskey('feed-'.$key) ?>
+          class="menuItem"
           ><?php echo htmlspecialchars($feed['text'])?></a><?php
     }
   }
@@ -208,18 +212,21 @@ class WikiJpmozTemplate extends QuickTemplate {
     if($this->data['nav_urls'][$special]) { ?>
       <a href="<?php echo htmlspecialchars($this->data['nav_urls'][$special]['href']) ?>"
         <?php echo $this->skin->tooltipAndAccesskey('t-'.$special) ?>
+        class="menuItem"
         ><?php $this->msg($special) ?></a>
     }
   }
   if (!empty($this->data['nav_urls']['print']['href'])) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href']) ?>"
-    rel="alternate" 
-    <?php echo $this->skin->tooltipAndAccesskey('t-print') ?>
+      rel="alternate" 
+      class="menuItem"
+      <?php echo $this->skin->tooltipAndAccesskey('t-print') ?>
     ><?php $this->msg('printableversion') ?></a><?php
   }
   if(!empty($this->data['nav_urls']['permalink']['href'])) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['permalink']['href']) ?>"
       <?php echo $this->skin->tooltipAndAccesskey('t-permalink') ?>
+      class="menuItem"
       ><?php $this->msg('permalink') ?></a><?php
   } elseif ($this->data['nav_urls']['permalink']['href'] === '') {
       echo $this->msg('permalink');
