@@ -12,7 +12,7 @@ div.menuBar {
   background-color: #d0d0d0;
   border: 2px solid;
   border-color: #f0f0f0 #909090 #909090 #f0f0f0;
-  padding: 4px 2px 4px 2px;
+  padding: 1px;
   text-align: left;
   width: 100%;
 }
@@ -89,6 +89,5 @@ form#menuSearchform {
   padding: 0pt;
   display: inline;
   vertical-align: center;
-  position: absolute;
 }
 

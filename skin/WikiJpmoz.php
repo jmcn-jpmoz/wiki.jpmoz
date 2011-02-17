@@ -121,7 +121,7 @@ class WikiJpmozTemplate extends QuickTemplate {
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'optionsMenu');"
-    onmouseover="buttonMouseover(event, 'optionsMenu');">Options</a>
+    onmouseover="buttonMouseover(event, 'optionsMenu');">アカウント</a>
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'helpMenu');"
@@ -162,6 +162,20 @@ class WikiJpmozTemplate extends QuickTemplate {
     ?></a></li>
   <?php if (strcmp($key, "talk") == 0) {echo '<div class="menuItemSep"></div>'; }
   } ?>
+</div>
+
+<div id="optionsMenu" class="menu" onmouseover="menuMouseover(event)">
+  <?php foreach ($this->data['personal_urls'] as $key => $item) { ?>
+    <a id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"
+      class="menuItem"
+      <?php if ($item['active']) { echo 'class="active"'; } ?>
+      href="<?php echo htmlspecialchars($item['href']) ?>"
+      <?php echo $skin->tooltipAndAccesskey('pt-'.$key) ?>
+      <?php if (!empty($item['class'])) { ?>
+        class="<?php echo htmlspecialchars($item['class']) ?>"
+      <?php } ?>
+    ><?php echo htmlspecialchars($item['text']) ?></a>
+  <?php } ?>
 </div>
 
 
@@ -268,21 +282,6 @@ class WikiJpmozTemplate extends QuickTemplate {
       </div>
     </div>
     <div id="column-one">
-      <div class="portlet" id="p-personal">
-        <h5><?php $this->msg('personaltools') ?></h5>
-        <div class="pBody">
-          <ul>
-            <?php       foreach($this->data['personal_urls'] as $key => $item) { ?>
-            <li id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"<?php
-              if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
-                echo htmlspecialchars($item['href']) ?>"<?php echo $skin->tooltipAndAccesskey('pt-'.$key) ?><?php
-              if(!empty($item['class'])) { ?> class="<?php
-                echo htmlspecialchars($item['class']) ?>"<?php } ?>><?php
-                echo htmlspecialchars($item['text']) ?></a></li>
-                <?php      } ?>
-          </ul>
-        </div>
-      </div>
       <div class="portlet" id="p-logo">
         <a style="background-image: url(<?php $this->text('logopath') ?>);" <?php
         ?>href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"<?php
