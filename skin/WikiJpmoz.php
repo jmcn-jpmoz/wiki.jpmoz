@@ -169,21 +169,6 @@ class WikiJpmozTemplate extends QuickTemplate {
   } ?>
 </div>
 
-<div id="optionsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
-  foreach ($this->data['personal_urls'] as $key => $item) { ?>
-    <a id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"
-      class="menuItem"
-      <?php if ($item['active']) { echo 'class="active"'; } ?>
-      href="<?php echo htmlspecialchars($item['href']) ?>"
-      <?php
-        echo $skin->tooltipAndAccesskey('pt-'.$key);
-        if (!empty($item['class'])) { 
-          echo 'class="' . htmlspecialchars($item['class']) . '"';
-        }
-      ?>><?php echo htmlspecialchars($item['text']) ?></a><?php
-  } ?>
-</div>
-
 <div id="toolsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
   if ($this->data['notspecialpage']) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href']) ?>"
@@ -238,6 +223,21 @@ class WikiJpmozTemplate extends QuickTemplate {
   }
   wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
   wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) ); ?>
+</div>
+
+<div id="optionsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
+  foreach ($this->data['personal_urls'] as $key => $item) { ?>
+    <a id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"
+      class="menuItem"
+      <?php if ($item['active']) { echo 'class="active"'; } ?>
+      href="<?php echo htmlspecialchars($item['href']) ?>"
+      <?php
+        echo $skin->tooltipAndAccesskey('pt-'.$key);
+        if (!empty($item['class'])) { 
+          echo 'class="' . htmlspecialchars($item['class']) . '"';
+        }
+      ?>><?php echo htmlspecialchars($item['text']) ?></a><?php
+  } ?>
 </div>
 
 
