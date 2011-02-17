@@ -91,7 +91,7 @@ class WikiJpmozTemplate extends QuickTemplate {
     <script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
 <?php  }
     if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
-  <script src="wikijpmoz/menubar.js" type="text/javascript"></script>
+  <script src="<?php $this->text('stylepath' ) ?>/wikijpmoz/menubar.js" type="text/javascript"></script>
 </head>
 
 
