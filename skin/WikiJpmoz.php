@@ -117,7 +117,7 @@ class WikiJpmozTemplate extends QuickTemplate {
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'toolsMenu');"
-    onmouseover="buttonMouseover(event, 'toolsMenu');">Tools</a>
+    onmouseover="buttonMouseover(event, 'toolsMenu');">ツール</a>
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'optionsMenu');"
@@ -176,6 +176,55 @@ class WikiJpmozTemplate extends QuickTemplate {
       <?php } ?>
     ><?php echo htmlspecialchars($item['text']) ?></a>
   <?php } ?>
+</div>
+
+<div id="toolsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
+  if ($this->data['notspecialpage']) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href'])
+      ?>"<?php echo $this->skin->tooltipAndAccesskey('t-whatlinkshere') ?>
+      ><?php $this->msg('whatlinkshere') ?></a><?php
+    if( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
+      <a href="<?php echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href'])
+        ?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>
+        ><?php $this->msg('recentchangeslinked') ?></a><?php
+    }
+  }
+  if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href'])
+      ?>"<?php echo $this->skin->tooltipAndAccesskey('t-trackbacklink') ?>
+      ><?php $this->msg('trackbacklink') ?></a><?php
+  }
+  if($this->data['feeds']) { 
+    foreach($this->data['feeds'] as $key => $feed) {
+      ?><a id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>" 
+          href="<?php echo htmlspecialchars($feed['href']) ?>" rel="alternate" 
+          type="application/<?php echo $key ?>+xml" class="feedlink"
+          <?php echo $this->skin->tooltipAndAccesskey('feed-'.$key) ?>
+          ><?php echo htmlspecialchars($feed['text'])?></a><?php
+    }
+  }
+  foreach( array('contributions', 'log', 'blockip', 'emailuser', 'upload', 'specialpages') as $special ) {
+    if($this->data['nav_urls'][$special]) { ?>
+      <a href="<?php echo htmlspecialchars($this->data['nav_urls'][$special]['href']) ?>"
+        <?php echo $this->skin->tooltipAndAccesskey('t-'.$special) ?>
+        ><?php $this->msg($special) ?></a>
+    }
+  }
+  if (!empty($this->data['nav_urls']['print']['href'])) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href']) ?>"
+    rel="alternate" 
+    <?php echo $this->skin->tooltipAndAccesskey('t-print') ?>
+    ><?php $this->msg('printableversion') ?></a><?php
+  }
+  if(!empty($this->data['nav_urls']['permalink']['href'])) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['permalink']['href']) ?>"
+      <?php echo $this->skin->tooltipAndAccesskey('t-permalink') ?>
+      ><?php $this->msg('permalink') ?></a><?php
+  } elseif ($this->data['nav_urls']['permalink']['href'] === '') {
+      echo $this->msg('permalink');
+  }
+  wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
+  wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) ); ?>
 </div>
 
 
@@ -290,25 +339,13 @@ class WikiJpmozTemplate extends QuickTemplate {
       <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
 
 <?php
-    $sidebar = $this->data['sidebar'];
-// Search -> top menu bar
-//    if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;
-    $sidebar['SEARCH'] = false;
-    if ( !isset( $sidebar['TOOLBOX'] ) ) $sidebar['TOOLBOX'] = true;
-// No language option
-//    if ( !isset( $sidebar['LANGUAGES'] ) ) $sidebar['LANGUAGES'] = true;
-    $sidebar['LANGUAGES'] = false;
-    foreach ($sidebar as $boxName => $cont) {
-      if ( $boxName == 'SEARCH' ) {
-        $this->searchBox();
-      } elseif ( $boxName == 'TOOLBOX' ) {
-        $this->toolbox();
-      } elseif ( $boxName == 'LANGUAGES' ) {
-        $this->languageBox();
-      } else {
-        $this->customBox( $boxName, $cont );
-      }
-    }
+  $sidebar = $this->data['sidebar'];
+  foreach ($sidebar as $boxName => $cont) {
+    if ( $boxName == 'SEARCH' ) {}
+    elseif ( $boxName == 'TOOLBOX' ) {}
+    elseif ( $boxName == 'LANGUAGES' ) {}
+    else {$this->customBox( $boxName, $cont ); }
+  }
 ?>
     </div><!-- end of the left (by default at least) column -->
     <div class="visualClear"></div>
@@ -361,110 +398,8 @@ class WikiJpmozTemplate extends QuickTemplate {
   wfRestoreWarnings();
   } // end of execute() method
 
+}
 
-
-
-  /*************************************************************************************************/
-  function searchBox() {
-    global $wgUseTwoButtonsSearchForm;
-?>
-  <div id="p-search" class="portlet">
-    <h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
-    <div id="searchBody" class="pBody">
-      <form action="<?php $this->text('wgScript') ?>" id="searchform"><div>
-        <input type='hidden' name="title" value="<?php $this->text('searchtitle') ?>"/>
-        <input id="searchInput" name="search" type="text"<?php echo $this->skin->tooltipAndAccesskey('search');
-          if( isset( $this->data['search'] ) ) {
-            ?> value="<?php $this->text('search') ?>"<?php } ?> />
-        <input type='submit' name="go" class="searchButton" id="searchGoButton"  value="<?php $this->msg('searcharticle') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-go' ); ?> /><?php if ($wgUseTwoButtonsSearchForm) { ?>&nbsp;
-        <input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?> /><?php } else { ?>
-
-        <div><a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a></div><?php } ?>
-
-      </div></form>
-    </div>
-  </div>
-<?php
-  }
-
-  /*************************************************************************************************/
-  function toolbox() {
-?>
-  <div class="portlet" id="p-tb">
-    <h5><?php $this->msg('toolbox') ?></h5>
-    <div class="pBody">
-      <ul>
-<?php
-    if($this->data['notspecialpage']) { ?>
-        <li id="t-whatlinkshere"><a href="<?php
-        echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href'])
-        ?>"<?php echo $this->skin->tooltipAndAccesskey('t-whatlinkshere') ?>><?php $this->msg('whatlinkshere') ?></a></li>
-<?php
-      if( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
-        <li id="t-recentchangeslinked"><a href="<?php
-        echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href'])
-        ?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>><?php $this->msg('recentchangeslinked') ?></a></li>
-<?php     }
-    }
-    if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
-      <li id="t-trackbacklink"><a href="<?php
-        echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href'])
-        ?>"<?php echo $this->skin->tooltipAndAccesskey('t-trackbacklink') ?>><?php $this->msg('trackbacklink') ?></a></li>
-<?php   }
-    if($this->data['feeds']) { ?>
-      <li id="feedlinks"><?php foreach($this->data['feeds'] as $key => $feed) {
-          ?><a id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>" href="<?php
-          echo htmlspecialchars($feed['href']) ?>" rel="alternate" type="application/<?php echo $key ?>+xml" class="feedlink"<?php echo $this->skin->tooltipAndAccesskey('feed-'.$key) ?>><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;
-          <?php } ?></li><?php
-    }
-
-    foreach( array('contributions', 'log', 'blockip', 'emailuser', 'upload', 'specialpages') as $special ) {
-
-      if($this->data['nav_urls'][$special]) {
-        ?><li id="t-<?php echo $special ?>"><a href="<?php echo htmlspecialchars($this->data['nav_urls'][$special]['href'])
-        ?>"<?php echo $this->skin->tooltipAndAccesskey('t-'.$special) ?>><?php $this->msg($special) ?></a></li>
-<?php    }
-    }
-
-    if(!empty($this->data['nav_urls']['print']['href'])) { ?>
-        <li id="t-print"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href'])
-        ?>" rel="alternate"<?php echo $this->skin->tooltipAndAccesskey('t-print') ?>><?php $this->msg('printableversion') ?></a></li><?php
-    }
-
-    if(!empty($this->data['nav_urls']['permalink']['href'])) { ?>
-        <li id="t-permalink"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['permalink']['href'])
-        ?>"<?php echo $this->skin->tooltipAndAccesskey('t-permalink') ?>><?php $this->msg('permalink') ?></a></li><?php
-    } elseif ($this->data['nav_urls']['permalink']['href'] === '') { ?>
-        <li id="t-ispermalink"<?php echo $this->skin->tooltip('t-ispermalink') ?>><?php $this->msg('permalink') ?></li><?php
-    }
-
-    wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
-    wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );
-?>
-      </ul>
-    </div>
-  </div>
-<?php
-  }
-
-  /*************************************************************************************************/
-  function languageBox() {
-    if( $this->data['language_urls'] ) {
-?>
-  <div id="p-lang" class="portlet">
-    <h5><?php $this->msg('otherlanguages') ?></h5>
-    <div class="pBody">
-      <ul>
-<?php    foreach($this->data['language_urls'] as $langlink) { ?>
-        <li class="<?php echo htmlspecialchars($langlink['class'])?>"><?php
-        ?><a href="<?php echo htmlspecialchars($langlink['href']) ?>"><?php echo $langlink['text'] ?></a></li>
-<?php    } ?>
-      </ul>
-    </div>
-  </div>
-<?php
-    }
-  }
 
   /*************************************************************************************************/
   function customBox( $bar, $cont ) {
