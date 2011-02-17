@@ -171,7 +171,7 @@ class WikiJpmozTemplate extends QuickTemplate {
       <?php if ($item['active']) { echo 'class="active"'; } ?>
       href="<?php echo htmlspecialchars($item['href']) ?>"
       <?php
-        echo $skin->tooltipAndAccesskey('pt-'.$key)
+        echo $skin->tooltipAndAccesskey('pt-'.$key);
         if (!empty($item['class'])) { 
           echo 'class="' . htmlspecialchars($item['class']) . '"';
         }
@@ -340,7 +340,6 @@ class WikiJpmozTemplate extends QuickTemplate {
       <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
 
 <?php
-/*
   $sidebar = $this->data['sidebar'];
   foreach ($sidebar as $boxName => $cont) {
     if ( $boxName == 'SEARCH' ) {}
@@ -348,7 +347,6 @@ class WikiJpmozTemplate extends QuickTemplate {
     elseif ( $boxName == 'LANGUAGES' ) {}
     else {$this->customBox( $boxName, $cont ); }
   }
-*/
 ?>
 
     </div><!-- end of the left (by default at least) column -->
