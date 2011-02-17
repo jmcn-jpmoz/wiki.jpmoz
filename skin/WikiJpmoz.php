@@ -91,13 +91,45 @@ class WikiJpmozTemplate extends QuickTemplate {
     <script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
 <?php  }
     if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
-
+  <script src="wikijpmoz/menubar.js" type="text/javascript"></script>
 </head>
 
 
 <body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload']) { ?> onload="<?php $this->text('body_onload') ?>"<?php } ?>
  class="mediawiki <?php $this->text('dir') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">
+
+<!--  TOP MENU BAR  -->
+
+<div class="menuBar" style="width:80%;">
+  <a class="menuButton"
+    href=""
+    onclick="return buttonClick(event, 'fileMenu');"
+    onmouseover="buttonMouseover(event, 'fileMenu');" >File</a>
+  <a class="menuButton"
+    href=""
+    onclick="return buttonClick(event, 'editMenu');"
+    onmouseover="buttonMouseover(event, 'editMenu');">Edit</a>
+  <a class="menuButton"
+    href=""
+    onclick="return buttonClick(event, 'viewMenu');"
+    onmouseover="buttonMouseover(event, 'viewMenu');">View</a>
+  <a class="menuButton"
+    href=""
+    onclick="return buttonClick(event, 'toolsMenu');"
+    onmouseover="buttonMouseover(event, 'toolsMenu');">Tools</a>
+  <a class="menuButton"
+    href=""
+    onclick="return buttonClick(event, 'optionsMenu');"
+    onmouseover="buttonMouseover(event, 'optionsMenu');">Options</a>
+  <a class="menuButton"
+    href=""
+    onclick="return buttonClick(event, 'helpMenu');"
+    onmouseover="buttonMouseover(event, 'helpMenu');">Help</a>
+</div>
+
+
+<!--
 
 <div class="box" id="headBarWrapper">
   <div class="headBar" id="headbar_inner">
@@ -124,77 +156,144 @@ class WikiJpmozTemplate extends QuickTemplate {
   </div>
 </div>
 
-  <div id="globalWrapper">
-    <div id="column-content">
-  <div id="content">
-    <a name="top" id="top"></a>
-    <?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
-    <h1 id="firstHeading" class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
-    <div id="bodyContent">
-      <h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
-      <div id="contentSub"><?php $this->html('subtitle') ?></div>
-      <?php if($this->data['undelete']) { ?><div id="contentSub2"><?php     $this->html('undelete') ?></div><?php } ?>
-      <?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
-      <?php if($this->data['showjumplinks']) { ?><div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div><?php } ?>
-      <!-- start content -->
-      <?php $this->html('bodytext') ?>
-      <?php if($this->data['catlinks']) { $this->html('catlinks'); } ?>
-      <!-- end content -->
-      <?php if($this->data['dataAfterContent']) { $this->html ('dataAfterContent'); } ?>
-      <div class="visualClear"></div>
+-->
+
+<!--
+
+<div id="atwiki-jp-bg2">
+  <div id="container">
+    <div id="atwiki-jp-header">
+      <div id="header" class="box">
+        <a href="/jpmozwiki/"><img src="http://img.atwiki.com/image/035col3/logo_atwiki.gif" id="toplogo"></a>
+        <h1><a href="/jpmozwiki/"> jpmozwiki @ ウィキ</a></h1>
+        <h2><a href="http://www16.atwiki.jp/jpmozwiki/pages/1.html"  title="トップページ (149d)">トップページ</a> </h2>
+      </div>
     </div>
+    <div id="wrapper" class="box">
+      <div id="contents">
+        <div id="contents_inner">
+           <div id="wikibody" class="box"> BODY </div>
+           <div id="body_footer"> FOOTER </div>
+           <div class="attach"> ATTACH </div>
+           <div class="footnote"> FOOTNOTE </div>
+         </div>
+       </div>
+       <div id="menubar_wrapper">
+         <div id="menubar" class="menu">
+           <div id="menubar_inner" class="box">
+             <h3>メニュー</h3>
+             <ul>
+               <li>A</li>
+             </ul>
+             <hr />
+             <h3>リンク</h3>
+             <ul>
+               <li>B</li>
+             </ul>
+             <div>
+               <a href="http://www16.atwiki.jp/jpmozwiki/editx/2.html">ここを編集</a>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div id="menubar2" class="menu">
+       <div id="menubar_inner2" class="box">
+         <h3>更新履歴</h3>
+         <div class="plugin_recent">
+           <p class="plugin_recent_day">2010-12-30</p>
+           <div class="plugin_recent_day_div">
+             <ul class="plugin_recent_ul">
+               <li><a href="http://www16.atwiki.jp/jpmozwiki/pages/13.html" title="トラブルシューティング (48d)" >トラブルシューティング</a></li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div id="footer">
+       <div id="footer_inner">
+         <hr>
+         FOOTER
+         <div id="recommend">RECOMMEND</div>
+       </div>
+     </div>
   </div>
+</div>
+
+-->
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <div id="content">
+      <a name="top" id="top"></a>
+      <?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
+      <h1 id="firstHeading" class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
+      <div id="bodyContent">
+        <h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
+        <div id="contentSub"><?php $this->html('subtitle') ?></div>
+          <?php if($this->data['undelete']) { ?><div id="contentSub2"><?php     $this->html('undelete') ?></div><?php } ?>
+          <?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
+          <?php if($this->data['showjumplinks']) { ?><div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div><?php } ?>
+          <!-- start content -->
+          <?php $this->html('bodytext') ?>
+          <?php if($this->data['catlinks']) { $this->html('catlinks'); } ?>
+          <!-- end content -->
+          <?php if($this->data['dataAfterContent']) { $this->html ('dataAfterContent'); } ?>
+          <div class="visualClear"></div>
+        </div>
+      </div>
     </div>
     <div id="column-one">
-  <div id="p-cactions" class="portlet">
-    <h5><?php $this->msg('views') ?></h5>
-    <div class="pBody">
-      <ul>
-  <?php    foreach($this->data['content_actions'] as $key => $tab) {
-          echo '
-         <li id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
-          if( $tab['class'] ) {
-            echo ' class="'.htmlspecialchars($tab['class']).'"';
-          }
-          echo'><a href="'.htmlspecialchars($tab['href']).'"';
-          # We don't want to give the watch tab an accesskey if the
-          # page is being edited, because that conflicts with the
-          # accesskey on the watch checkbox.  We also don't want to
-          # give the edit tab an accesskey, because that's fairly su-
-          # perfluous and conflicts with an accesskey (Ctrl-E) often
-          # used for editing in Safari.
-           if( in_array( $action, array( 'edit', 'submit' ) )
-           && in_array( $key, array( 'edit', 'watch', 'unwatch' ))) {
-             echo $skin->tooltip( "ca-$key" );
-           } else {
-             echo $skin->tooltipAndAccesskey( "ca-$key" );
-           }
-           echo '>'.htmlspecialchars($tab['text']).'</a></li>';
-        } ?>
-      </ul>
-    </div>
-  </div>
-  <div class="portlet" id="p-personal">
-    <h5><?php $this->msg('personaltools') ?></h5>
-    <div class="pBody">
-      <ul>
-<?php       foreach($this->data['personal_urls'] as $key => $item) { ?>
-        <li id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"<?php
-          if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
-        echo htmlspecialchars($item['href']) ?>"<?php echo $skin->tooltipAndAccesskey('pt-'.$key) ?><?php
-        if(!empty($item['class'])) { ?> class="<?php
-        echo htmlspecialchars($item['class']) ?>"<?php } ?>><?php
-        echo htmlspecialchars($item['text']) ?></a></li>
-<?php      } ?>
-      </ul>
-    </div>
-  </div>
-  <div class="portlet" id="p-logo">
-    <a style="background-image: url(<?php $this->text('logopath') ?>);" <?php
-      ?>href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"<?php
-      echo $skin->tooltipAndAccesskey('p-logo') ?>></a>
-  </div>
-  <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
+      <div id="p-cactions" class="portlet">
+        <h5><?php $this->msg('views') ?></h5>
+        <div class="pBody">
+          <ul>
+            <?php    foreach($this->data['content_actions'] as $key => $tab) {
+              echo '
+            <li id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
+            if( $tab['class'] ) {
+              echo ' class="'.htmlspecialchars($tab['class']).'"';
+            }
+            echo'><a href="'.htmlspecialchars($tab['href']).'"';
+            # We don't want to give the watch tab an accesskey if the
+            # page is being edited, because that conflicts with the
+            # accesskey on the watch checkbox.  We also don't want to
+            # give the edit tab an accesskey, because that's fairly su-
+            # perfluous and conflicts with an accesskey (Ctrl-E) often
+            # used for editing in Safari.
+             if( in_array( $action, array( 'edit', 'submit' ) )
+             && in_array( $key, array( 'edit', 'watch', 'unwatch' ))) {
+               echo $skin->tooltip( "ca-$key" );
+             } else {
+               echo $skin->tooltipAndAccesskey( "ca-$key" );
+             }
+             echo '>'.htmlspecialchars($tab['text']).'</a></li>';
+            } ?>
+          </ul>
+        </div>
+      </div>
+      <div class="portlet" id="p-personal">
+        <h5><?php $this->msg('personaltools') ?></h5>
+        <div class="pBody">
+          <ul>
+            <?php       foreach($this->data['personal_urls'] as $key => $item) { ?>
+            <li id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"<?php
+              if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
+                echo htmlspecialchars($item['href']) ?>"<?php echo $skin->tooltipAndAccesskey('pt-'.$key) ?><?php
+              if(!empty($item['class'])) { ?> class="<?php
+                echo htmlspecialchars($item['class']) ?>"<?php } ?>><?php
+                echo htmlspecialchars($item['text']) ?></a></li>
+                <?php      } ?>
+          </ul>
+        </div>
+      </div>
+      <div class="portlet" id="p-logo">
+        <a style="background-image: url(<?php $this->text('logopath') ?>);" <?php
+        ?>href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"<?php
+        echo $skin->tooltipAndAccesskey('p-logo') ?>></a>
+      </div>
+      <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
+
 <?php
     $sidebar = $this->data['sidebar'];
     if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;
@@ -213,7 +312,7 @@ class WikiJpmozTemplate extends QuickTemplate {
     }
 ?>
     </div><!-- end of the left (by default at least) column -->
-      <div class="visualClear"></div>
+    <div class="visualClear"></div>
       <div id="footer">
 <?php
     if($this->data['poweredbyico']) { ?>
@@ -257,9 +356,14 @@ class WikiJpmozTemplate extends QuickTemplate {
 -->
 <?php endif; ?>
 </body></html>
+
+
 <?php
   wfRestoreWarnings();
   } // end of execute() method
+
+
+
 
   /*************************************************************************************************/
   function searchBox() {
