@@ -2,6 +2,7 @@ div.menuBar,
 div.menuBar a.menuButton,
 div.menu,
 div.menu a.menuItem {
+  font-size: medium;
   font-style: normal;
   font-weight: normal;
   color: #000000;
