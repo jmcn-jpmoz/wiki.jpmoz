@@ -149,9 +149,9 @@ class WikiJpmozTemplate extends QuickTemplate {
     if ((strcmp($key, "watch") == 0) || (strcmp($key, "unwatch") == 0) ||
         (strcmp($key, "varlang-0") == 0) || (strcmp($key, "print") == 0)) {
       echo '<div class="menuItemSep"></div>';
-    } ?><a id="<?php Sanitizer::escapeId( "ca-$key" ) ?>" class="menuItem 
+    } ?><a id="<?php echo Sanitizer::escapeId( "ca-$key" ); ?>" class="menuItem 
     <?php if ( $tab['class'] ) {echo htmlspecialchars($tab['class']); } ?>"
-    href="<?php htmlspecialchars($tab['href']) ?>" <?php
+    href="<?php echo htmlspecialchars($tab['href']); ?>" <?php
     if( in_array( $action, array( 'edit', 'submit' ) )
      && in_array( $key, array( 'edit', 'watch', 'unwatch' ))) {
       echo $skin->tooltip( "ca-$key" );
