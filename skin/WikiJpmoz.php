@@ -198,6 +198,7 @@ class WikiJpmozTemplate extends QuickTemplate {
       class="menuItem"
       ><?php $this->msg('trackbacklink') ?></a><?php
   }
+/*
   if($this->data['feeds']) { 
     foreach($this->data['feeds'] as $key => $feed) {
       ?><a id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>" 
@@ -208,7 +209,6 @@ class WikiJpmozTemplate extends QuickTemplate {
           ><?php echo htmlspecialchars($feed['text'])?></a><?php
     }
   }
-/*
   foreach( array('contributions', 'log', 'blockip', 'emailuser', 'upload', 'specialpages') as $special ) {
     if($this->data['nav_urls'][$special]) { ?>
       <a href="<?php echo htmlspecialchars($this->data['nav_urls'][$special]['href']) ?>"
