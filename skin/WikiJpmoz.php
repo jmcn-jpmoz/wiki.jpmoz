@@ -137,7 +137,7 @@ class WikiJpmozTemplate extends QuickTemplate {
     <?php if ($wgUseTwoButtonsSearchForm) { ?>
       <input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?> /><?php
     } else { ?>
-      <a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a></div><?php 
+      <a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a><?php 
     } ?>
   </form>
 
