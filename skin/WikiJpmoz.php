@@ -313,9 +313,11 @@ class WikiJpmozTemplate extends QuickTemplate {
     $sidebar = $this->data['sidebar'];
 // Search -> top menu bar
 //    if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;
+    $sidebar['SEARCH'] = false;
     if ( !isset( $sidebar['TOOLBOX'] ) ) $sidebar['TOOLBOX'] = true;
 // No language option
 //    if ( !isset( $sidebar['LANGUAGES'] ) ) $sidebar['LANGUAGES'] = true;
+    $sidebar['LANGUAGES'] = false;
     foreach ($sidebar as $boxName => $cont) {
       if ( $boxName == 'SEARCH' ) {
         $this->searchBox();
