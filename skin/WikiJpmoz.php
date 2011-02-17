@@ -185,6 +185,49 @@ class WikiJpmozTemplate extends QuickTemplate {
 </div>
 
 <div id="toolsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
+  if ($this->data['notspecialpage']) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href']) ?>"
+      <?php echo $this->skin->tooltipAndAccesskey('t-whatlinkshere') ?>
+      class="menuItem"
+      ><?php $this->msg('whatlinkshere') ?></a><?php
+    if ( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
+      <a href="<?php echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href']) ?>"
+        <?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>
+        class="menuItem"
+        ><?php $this->msg('recentchangeslinked') ?></a><?php
+    }
+  }
+  if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href']) ?>"
+      <?php echo $this->skin->tooltipAndAccesskey('t-trackbacklink') ?>
+      class="menuItem"
+      ><?php $this->msg('trackbacklink') ?></a><?php
+  }
+  if($this->data['feeds']) { 
+    foreach($this->data['feeds'] as $key => $feed) {
+      ?><a id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>" 
+          href="<?php echo htmlspecialchars($feed['href']) ?>" rel="alternate" 
+          type="application/<?php echo $key ?>+xml" class="feedlink"
+          <?php echo $this->skin->tooltipAndAccesskey('feed-'.$key) ?>
+          class="menuItem"
+          ><?php echo htmlspecialchars($feed['text'])?></a><?php
+    }
+  }
+  if (!empty($this->data['nav_urls']['print']['href'])) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href']) ?>"
+      rel="alternate" 
+      class="menuItem"
+      <?php echo $this->skin->tooltipAndAccesskey('t-print') ?>
+    ><?php $this->msg('printableversion') ?></a><?php
+  }
+  if (!empty($this->data['nav_urls']['permalink']['href'])) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['permalink']['href']) ?>"
+      <?php echo $this->skin->tooltipAndAccesskey('t-permalink') ?>
+      class="menuItem"
+      ><?php $this->msg('permalink') ?></a><?php
+  }
+  wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
+  wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );
   ?>
 </div>
 
@@ -360,7 +403,6 @@ class WikiJpmozTemplate extends QuickTemplate {
   wfRestoreWarnings();
   } // end of execute() method
 
-}
 
 
   /*************************************************************************************************/
