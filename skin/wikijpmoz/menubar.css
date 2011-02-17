@@ -104,3 +104,7 @@ span.menuRight {
   cursor: default;
 }
 
+a#menuTweet {
+  top: -2px;
+}
+
