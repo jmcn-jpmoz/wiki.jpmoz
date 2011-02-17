@@ -213,14 +213,7 @@ class WikiJpmozTemplate extends QuickTemplate {
           ><?php echo htmlspecialchars($feed['text'])?></a><?php
     }
   }
-  foreach( array('contributions', 'log', 'blockip', 'emailuser', 'upload', 'specialpages') as $special ) {
-    if($this->data['nav_urls'][$special]) { ?>
-      <a href="<?php echo htmlspecialchars($this->data['nav_urls'][$special]['href']) ?>"
-        <?php echo $this->skin->tooltipAndAccesskey('t-'.$special) ?>
-        class="menuItem"
-        ><?php $this->msg($special) ?></a>
-    } ?>a<?php
-  }
+
   if (!empty($this->data['nav_urls']['print']['href'])) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href']) ?>"
       rel="alternate" 
