@@ -97,14 +97,14 @@ span.menuRight {
   right: 0pt;
   border: 1px solid #D0D0D0;
   margin: 1px;
-  padding: 2px 6px 2px 6px;
+  padding: 2px 6px 0px 0px;
   background-color: transparent;
   color: #000000;
   text-decoration: none;
   cursor: default;
 }
 
-a#menuTweet {
-  top: -2px;
+img#menuTweet {
+  margin-top: -3px;
 }
 

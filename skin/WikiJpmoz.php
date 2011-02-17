@@ -142,9 +142,8 @@ class WikiJpmozTemplate extends QuickTemplate {
   </form>
 
   <span class="menuRight">
-    <a id="menuTweet"
-      href="http://twitter.com/home?status=jpmozwiki%20%40%20%E3%82%A6%E3%82%A3%E3%82%AD%20-%20%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%20http://www16.atwiki.jp/jpmozwiki/%20%23atwiki" target="_blank" style="border: medium none;">
-      <img title="このwikiについてTwitterでつぶやく" 
+    <a href="http://twitter.com/home?status=wiki@jpmoz%20-%20<?php echo htmlspecialchars($this->text('title')) ?>" target="_blank" style="border: medium none;">
+      <img id="menuTweet" title="このwikiページについてTwitterでつぶやく" 
         src="<?php $this->text('stylepath' ) ?>/wikijpmoz/tweet.png" style="border: medium none; vertical-align: top;">
     </a>
     <a href="/Special:%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3?type=signup" title="新規アカウント作成" class="menuButton" rel="nofollow">新規アカウント作成</a>
