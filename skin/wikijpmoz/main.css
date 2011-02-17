@@ -40,8 +40,10 @@ body {
 #globalWrapper {
 	font-size: 127%;
 	width: 100%;
+/*
 	margin: 0;
 	padding: 0;
+*/
 }
 .visualClear {
 	clear: both;

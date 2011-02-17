@@ -83,3 +83,11 @@ div.menu div.menuItemSep {
   margin: 4px 2px;
 }
 
+form.menuSearchform {
+  margin: 0pt;
+  padding: 0pt;
+  display: inline;
+  vertical-align: bottom;
+  position: absolute;
+}
+

@@ -101,7 +101,7 @@ class WikiJpmozTemplate extends QuickTemplate {
 
 <!--  TOP MENU BAR  -->
 
-<div class="menuBar" style="width:80%;">
+<div class="menuBar">
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'fileMenu');"
@@ -128,7 +128,7 @@ class WikiJpmozTemplate extends QuickTemplate {
     onmouseover="buttonMouseover(event, 'helpMenu');">Help</a>
 
 
-  <form action="<?php $this->text('wgScript') ?>" id="searchform">
+  <form action="<?php $this->text('wgScript') ?>" id="menuSearchform">
     <input type='hidden' name="title" value="<?php $this->text('searchtitle') ?>"/>
     <input id="searchInput" name="search" type="text"<?php echo $this->skin->tooltipAndAccesskey('search');
       if( isset( $this->data['search'] ) ) {
@@ -311,9 +311,11 @@ class WikiJpmozTemplate extends QuickTemplate {
 
 <?php
     $sidebar = $this->data['sidebar'];
-    if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;
+// Search -> top menu bar
+//    if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;
     if ( !isset( $sidebar['TOOLBOX'] ) ) $sidebar['TOOLBOX'] = true;
-    if ( !isset( $sidebar['LANGUAGES'] ) ) $sidebar['LANGUAGES'] = true;
+// No language option
+//    if ( !isset( $sidebar['LANGUAGES'] ) ) $sidebar['LANGUAGES'] = true;
     foreach ($sidebar as $boxName => $cont) {
       if ( $boxName == 'SEARCH' ) {
         $this->searchBox();
