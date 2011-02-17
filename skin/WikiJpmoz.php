@@ -219,7 +219,7 @@ class WikiJpmozTemplate extends QuickTemplate {
         <?php echo $this->skin->tooltipAndAccesskey('t-'.$special) ?>
         class="menuItem"
         ><?php $this->msg($special) ?></a>
-    }
+    } ?>a<?php
   }
   if (!empty($this->data['nav_urls']['print']['href'])) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href']) ?>"
@@ -233,13 +233,9 @@ class WikiJpmozTemplate extends QuickTemplate {
       <?php echo $this->skin->tooltipAndAccesskey('t-permalink') ?>
       class="menuItem"
       ><?php $this->msg('permalink') ?></a><?php
-  } elseif ($this->data['nav_urls']['permalink']['href'] === '') {
-      echo $this->msg('permalink');
   }
-/*
   wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
   wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );
-*/
   ?>
 </div>
 
