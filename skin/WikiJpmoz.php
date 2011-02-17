@@ -164,6 +164,7 @@ class WikiJpmozTemplate extends QuickTemplate {
   } ?>
 </div>
 
+/*
 <div id="optionsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
   foreach ($this->data['personal_urls'] as $key => $item) { ?>
     <a id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"
@@ -181,24 +182,23 @@ class WikiJpmozTemplate extends QuickTemplate {
 
 <div id="toolsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
   if ($this->data['notspecialpage']) { ?>
-    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href'])
-      ?>"<?php echo $this->skin->tooltipAndAccesskey('t-whatlinkshere') ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href']) ?>"
+      <?php echo $this->skin->tooltipAndAccesskey('t-whatlinkshere') ?>
       class="menuItem"
       ><?php $this->msg('whatlinkshere') ?></a><?php
-    if( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
-      <a href="<?php echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href'])
-        ?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>
+    if ( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
+      <a href="<?php echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href']) ?>"
+        <?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>
         class="menuItem"
         ><?php $this->msg('recentchangeslinked') ?></a><?php
     }
   }
   if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
-    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href'])
-      ?>"<?php echo $this->skin->tooltipAndAccesskey('t-trackbacklink') ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href']) ?>"
+      <?php echo $this->skin->tooltipAndAccesskey('t-trackbacklink') ?>
       class="menuItem"
       ><?php $this->msg('trackbacklink') ?></a><?php
   }
-/*
   if($this->data['feeds']) { 
     foreach($this->data['feeds'] as $key => $feed) {
       ?><a id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>" 
