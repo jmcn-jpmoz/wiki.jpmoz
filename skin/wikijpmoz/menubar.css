@@ -93,8 +93,14 @@ form#menuSearchform {
 
 span.menuRight {
   position: absolute;
-  top: -1px;
+  background-color: transparent;
   right: 0pt;
-  border: medium none;
+  border: 1px solid #D0D0D0;
+  color: #000000;
+  margin: 1px;
+  text-decoration: none;
+  cursor: default;
+  padding: 2px 6px 2px 6px;
+  top: 0px;
 }
 
