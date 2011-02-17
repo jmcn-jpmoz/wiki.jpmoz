@@ -208,6 +208,7 @@ class WikiJpmozTemplate extends QuickTemplate {
           ><?php echo htmlspecialchars($feed['text'])?></a><?php
     }
   }
+/*
   foreach( array('contributions', 'log', 'blockip', 'emailuser', 'upload', 'specialpages') as $special ) {
     if($this->data['nav_urls'][$special]) { ?>
       <a href="<?php echo htmlspecialchars($this->data['nav_urls'][$special]['href']) ?>"
@@ -216,6 +217,7 @@ class WikiJpmozTemplate extends QuickTemplate {
         ><?php $this->msg($special) ?></a>
     }
   }
+*/
   if (!empty($this->data['nav_urls']['print']['href'])) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href']) ?>"
       rel="alternate" 
@@ -223,7 +225,7 @@ class WikiJpmozTemplate extends QuickTemplate {
       <?php echo $this->skin->tooltipAndAccesskey('t-print') ?>
     ><?php $this->msg('printableversion') ?></a><?php
   }
-  if(!empty($this->data['nav_urls']['permalink']['href'])) { ?>
+  if (!empty($this->data['nav_urls']['permalink']['href'])) { ?>
     <a href="<?php echo htmlspecialchars($this->data['nav_urls']['permalink']['href']) ?>"
       <?php echo $this->skin->tooltipAndAccesskey('t-permalink') ?>
       class="menuItem"
