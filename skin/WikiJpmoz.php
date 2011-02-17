@@ -180,6 +180,52 @@ class WikiJpmozTemplate extends QuickTemplate {
 </div>
 
 <div id="toolsMenu" class="menu" onmouseover="menuMouseover(event)"><?php
+  if ($this->data['notspecialpage']) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href'])
+      ?>"<?php echo $this->skin->tooltipAndAccesskey('t-whatlinkshere') ?>
+      ><?php $this->msg('whatlinkshere') ?></a><?php
+    if( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
+      <a href="<?php echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href'])
+        ?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>
+        ><?php $this->msg('recentchangeslinked') ?></a><?php
+    }
+  }
+  if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href'])
+      ?>"<?php echo $this->skin->tooltipAndAccesskey('t-trackbacklink') ?>
+      ><?php $this->msg('trackbacklink') ?></a><?php
+  }
+  if($this->data['feeds']) { 
+    foreach($this->data['feeds'] as $key => $feed) {
+      ?><a id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>" 
+          href="<?php echo htmlspecialchars($feed['href']) ?>" rel="alternate" 
+          type="application/<?php echo $key ?>+xml" class="feedlink"
+          <?php echo $this->skin->tooltipAndAccesskey('feed-'.$key) ?>
+          ><?php echo htmlspecialchars($feed['text'])?></a><?php
+    }
+  }
+  foreach( array('contributions', 'log', 'blockip', 'emailuser', 'upload', 'specialpages') as $special ) {
+    if($this->data['nav_urls'][$special]) { ?>
+      <a href="<?php echo htmlspecialchars($this->data['nav_urls'][$special]['href']) ?>"
+        <?php echo $this->skin->tooltipAndAccesskey('t-'.$special) ?>
+        ><?php $this->msg($special) ?></a>
+    }
+  }
+  if (!empty($this->data['nav_urls']['print']['href'])) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href']) ?>"
+    rel="alternate" 
+    <?php echo $this->skin->tooltipAndAccesskey('t-print') ?>
+    ><?php $this->msg('printableversion') ?></a><?php
+  }
+  if(!empty($this->data['nav_urls']['permalink']['href'])) { ?>
+    <a href="<?php echo htmlspecialchars($this->data['nav_urls']['permalink']['href']) ?>"
+      <?php echo $this->skin->tooltipAndAccesskey('t-permalink') ?>
+      ><?php $this->msg('permalink') ?></a><?php
+  } elseif ($this->data['nav_urls']['permalink']['href'] === '') {
+      echo $this->msg('permalink');
+  }
+  wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
+  wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) ); ?>
 </div>
 
 
@@ -294,6 +340,7 @@ class WikiJpmozTemplate extends QuickTemplate {
       <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
 
 <?php
+/*
   $sidebar = $this->data['sidebar'];
   foreach ($sidebar as $boxName => $cont) {
     if ( $boxName == 'SEARCH' ) {}
@@ -301,6 +348,7 @@ class WikiJpmozTemplate extends QuickTemplate {
     elseif ( $boxName == 'LANGUAGES' ) {}
     else {$this->customBox( $boxName, $cont ); }
   }
+*/
 ?>
 
     </div><!-- end of the left (by default at least) column -->
