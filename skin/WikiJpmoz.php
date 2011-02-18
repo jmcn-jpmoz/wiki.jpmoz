@@ -325,7 +325,8 @@ class WikiJpmozTemplate extends QuickTemplate {
       </div>
     </div>
     <div id="column-one">
-      <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
+      <div id="column-one-inner">
+        <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
 
 <?php
   $sidebar = $this->data['sidebar'];
@@ -338,6 +339,7 @@ class WikiJpmozTemplate extends QuickTemplate {
 ?>
 
     </div><!-- end of the left (by default at least) column -->
+    </div>
     <div class="visualClear"></div>
     <div id="footer"><?php
       if($this->data['poweredbyico']) { ?>
