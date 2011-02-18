@@ -9,6 +9,7 @@ class SkinWikiJpmoz extends SkinTemplate {
     $this->skinname  = 'wikijpmoz';
     $this->stylename = 'wikijpmoz';
     $this->template  = 'WikiJpmozTemplate';
+    $wpLogo = $this->text('stylepath' ) . '/wikijpmoz/foxkeh.png';
   }
 
   function setupSkinUserCss( OutputPage $out ) {
