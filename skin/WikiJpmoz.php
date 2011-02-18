@@ -327,18 +327,16 @@ class WikiJpmozTemplate extends QuickTemplate {
     <div id="column-one">
       <div id="column-one-inner">
         <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
-
-<?php
-  $sidebar = $this->data['sidebar'];
-  foreach ($sidebar as $boxName => $cont) {
-    if ( $boxName == 'SEARCH' ) {}
-    elseif ( $boxName == 'TOOLBOX' ) {}
-    elseif ( $boxName == 'LANGUAGES' ) {}
-    else {$this->customBox( $boxName, $cont ); }
-  }
-?>
-
-    </div><!-- end of the left (by default at least) column -->
+        <?php
+          $sidebar = $this->data['sidebar'];
+          foreach ($sidebar as $boxName => $cont) {
+            if ( $boxName == 'SEARCH' ) {}
+            elseif ( $boxName == 'TOOLBOX' ) {}
+            elseif ( $boxName == 'LANGUAGES' ) {}
+            else {$this->customBox( $boxName, $cont ); }
+          }
+        ?>
+      </div>
     </div>
     <div class="visualClear"></div>
     <div id="footer"><?php
