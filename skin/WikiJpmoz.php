@@ -306,18 +306,19 @@ class WikiJpmozTemplate extends QuickTemplate {
 -->
 
 
+<div id="main-panel">
+  <div id="content-header">
+    <a name="top" id="top"></a>
+    <a style="background-image: url(<?php $this->text('logopath') ?>);" 
+       href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"
+       <?php echo $skin->tooltipAndAccesskey('p-logo') ?>></a>
+    <h1 id="firstHeading" class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
+    <?php if($this->data['sitenotice']) { ?>
+      <h2 id="siteNotice"><?php $this->html('sitenotice') ?></h2>
+    <?php } ?>
+  </div>
   <div id="column-content">
     <div id="content">
-      <div id="content-header">
-        <a name="top" id="top"></a>
-        <a style="background-image: url(<?php $this->text('logopath') ?>);" 
-           href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"
-           <?php echo $skin->tooltipAndAccesskey('p-logo') ?>></a>
-        <h1 id="firstHeading" class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
-        <?php if($this->data['sitenotice']) { ?>
-          <h2 id="siteNotice"><?php $this->html('sitenotice') ?></h2>
-        <?php } ?>
-      </div>
       <div id="bodyContent">
         <h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
         <div id="contentSub"><?php $this->html('subtitle') ?></div>
@@ -332,7 +333,6 @@ class WikiJpmozTemplate extends QuickTemplate {
           <div class="visualClear"></div>
         </div>
       </div>
-    </div>
     <div id="column-one">
       <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
 
@@ -376,6 +376,7 @@ class WikiJpmozTemplate extends QuickTemplate {
         </ul><?php
       }  ?>
     </div>
+  </div>
   </div>
 
 <?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>
