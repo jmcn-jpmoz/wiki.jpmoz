@@ -54,6 +54,7 @@ div#content-header h2 {
   float: left;
   overflow: hidden;
   width: 180px;
+  margin-top: 10px;
 }
 #column-one-inner {
   padding-left: 10px;
