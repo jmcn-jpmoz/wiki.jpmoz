@@ -1,13 +1,14 @@
 #content-header {
-  margin: 0 25px 25px;
+  font-size: medium;
   border-bottom: 3px solid #FFA500;
-  height: 180px;
+  height: 170px;
+  margin: 0 15px 15px;
 /* height = toplogo/margin + toplogo/height */
 }
 div#content-header a#toplogo {
   width: 150px;
   height: 150px;
-  margin: 10px 10px 20px 5px;
+  margin: 10px 10px 10px 5px;
   display: block;
   float: left;
   background: no-repeat scroll;
@@ -23,8 +24,8 @@ div#content-header h1 {
 div#content-header h2 {
   margin-bottom: .1em;
   line-height: 1.2em;
-  border-bottom: none;
   padding-bottom: 0;
+  border: 1px solid #FFA500;
 }
 
 #column-content {
