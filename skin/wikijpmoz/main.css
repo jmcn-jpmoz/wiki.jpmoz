@@ -37,7 +37,6 @@ div#content-header h2 {
 }
 #bodyContent {
   margin-top: 10px;
-  position: relative;
   line-height: 1.5em;
   float: right;
   margin-left: -200px;
@@ -45,7 +44,7 @@ div#content-header h2 {
 }
 #bodyContent-inner {
   margin-left: 204px;
-  margin-right: 200px;
+/*  margin-right: 200px; */
   overflow: hidden;
   border: 2px dotted #FFA500;
   padding: 10px;
