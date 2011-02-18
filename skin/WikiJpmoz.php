@@ -9,7 +9,6 @@ class SkinWikiJpmoz extends SkinTemplate {
     $this->skinname  = 'wikijpmoz';
     $this->stylename = 'wikijpmoz';
     $this->template  = 'WikiJpmozTemplate';
-    $wpLogo = '/scr/skins/wikijpmoz/foxkeh.png';
   }
 
   function setupSkinUserCss( OutputPage $out ) {
@@ -310,7 +309,7 @@ class WikiJpmozTemplate extends QuickTemplate {
 <div id="main-panel">
   <div id="content-header">
     <a name="top" id="top"></a>
-    <a style="background-image: url(<?php $this->text('logopath') ?>);" 
+    <a style="background-image: url(<?php $this->text('stylepath' ) ?>/wikijpmoz/foxkeh.png); "
        href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"
        <?php echo $skin->tooltipAndAccesskey('p-logo') ?>
        id="toplogo"></a>
