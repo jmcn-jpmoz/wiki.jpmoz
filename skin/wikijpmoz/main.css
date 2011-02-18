@@ -38,17 +38,18 @@ div#content-header h2 {
 #bodyContent {
   margin-top: 10px;
   padding: 1em;
-  position: relative;
+//  position: relative;
   z-index: 2;
-  border: 2px dotted #FFA500;
   line-height: 1.5em;
   float: right;
   margin-left: -200px;
+  width: 100%;
 }
 #bodyContent-inner {
   margin-left: 204px;
   margin-right: 200px;
   overflow: hidden;
+  border: 2px dotted #FFA500;
 }
 #column-one {
   float: left;
