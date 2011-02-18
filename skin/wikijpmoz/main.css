@@ -1,16 +1,16 @@
-#content-header a#toplogo {
+div#content-header a#toplogo {
   width: 100px;
   height: 100px;
   margin: 20px 20px 20px 5px;
   display: block;
   float: left;
 }
-#content-header h1 {
+div#content-header h1 {
   margin-bottom: .1em;
   line-height: 1.2em;
   padding-bottom: 0;
 }
-#content-header h2 {
+div#content-header h2 {
   margin-bottom: .1em;
   line-height: 1.2em;
   padding-bottom: 0;

@@ -311,8 +311,9 @@ class WikiJpmozTemplate extends QuickTemplate {
     <a name="top" id="top"></a>
     <a style="background-image: url(<?php $this->text('logopath') ?>);" 
        href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"
-       <?php echo $skin->tooltipAndAccesskey('p-logo') ?>></a>
-    <h1 id="firstHeading" class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
+       <?php echo $skin->tooltipAndAccesskey('p-logo') ?>
+       id="toplogo"></a>
+    <h1><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
     <?php if($this->data['sitenotice']) { ?>
       <h2 id="siteNotice"><?php $this->html('sitenotice') ?></h2>
     <?php } ?>
