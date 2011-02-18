@@ -2,7 +2,7 @@
   font-size: medium;
   border-bottom: 3px solid #FFA500;
   height: 170px;
-  margin: 0 15px 15px;
+  margin: 0px 15px 0px;
 /* height = toplogo/margin + toplogo/height */
 }
 div#content-header a#toplogo {
@@ -33,17 +33,22 @@ div#content-header h2 {
   width: 100%;
   background: white;
   color: black;
+  padding-top: 10px;
 }
 #bodyContent {
   margin-top: 10px;
-  margin-left: 204px;
-  margin-right: 200px;
   padding: 1em;
   position: relative;
   z-index: 2;
   border: 2px dotted #FFA500;
-  overflow: hidden;
   line-height: 1.5em;
+  float: right;
+  margin-left: -200px;
+}
+#bodyContent-inner {
+  margin-left: 204px;
+  margin-right: 200px;
+  overflow: hidden;
 }
 #column-one {
   float: left;
@@ -268,7 +273,7 @@ pre {
 #contentSub, #contentSub2 {
   font-size: 84%;
   line-height: 1.2em;
-  margin: 0 0 1.4em 1em;
+  margin: 0 0 0.3em 0.3em;
   color: #7d7d7d;
   width: auto;
 }
