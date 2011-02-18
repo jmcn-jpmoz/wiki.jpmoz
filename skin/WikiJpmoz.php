@@ -99,6 +99,8 @@ class WikiJpmozTemplate extends QuickTemplate {
 <?php if($this->data['body_onload']) { ?> onload="<?php $this->text('body_onload') ?>"<?php } ?>
  class="mediawiki <?php $this->text('dir') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">
 
+<div id="globalWrapper">
+
 <!--  TOP MENU BAR  -->
 
 <div class="menuBar">
@@ -244,6 +246,7 @@ class WikiJpmozTemplate extends QuickTemplate {
 
 <div id="atwiki-jp-bg2">
   <div id="container">
+
     <div id="atwiki-jp-header">
       <div id="header" class="box">
         <a href="/jpmozwiki/"><img src="http://img.atwiki.com/image/035col3/logo_atwiki.gif" id="toplogo"></a>
@@ -255,9 +258,7 @@ class WikiJpmozTemplate extends QuickTemplate {
       <div id="contents">
         <div id="contents_inner">
            <div id="wikibody" class="box"> BODY </div>
-           <div id="body_footer"> FOOTER </div>
            <div class="attach"> ATTACH </div>
-           <div class="footnote"> FOOTNOTE </div>
          </div>
        </div>
        <div id="menubar_wrapper">
@@ -304,12 +305,19 @@ class WikiJpmozTemplate extends QuickTemplate {
 
 -->
 
-<div id="globalWrapper">
+
   <div id="column-content">
     <div id="content">
-      <a name="top" id="top"></a>
-      <?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
-      <h1 id="firstHeading" class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
+      <div id="content-header">
+        <a name="top" id="top"></a>
+        <a style="background-image: url(<?php $this->text('logopath') ?>);" 
+           href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"
+           <?php echo $skin->tooltipAndAccesskey('p-logo') ?>></a>
+        <h1 id="firstHeading" class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
+        <?php if($this->data['sitenotice']) { ?>
+          <h2 id="siteNotice"><?php $this->html('sitenotice') ?></h2>
+        <?php } ?>
+      </div>
       <div id="bodyContent">
         <h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
         <div id="contentSub"><?php $this->html('subtitle') ?></div>
@@ -326,11 +334,6 @@ class WikiJpmozTemplate extends QuickTemplate {
       </div>
     </div>
     <div id="column-one">
-      <div class="portlet" id="p-logo">
-        <a style="background-image: url(<?php $this->text('logopath') ?>);" <?php
-        ?>href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"<?php
-        echo $skin->tooltipAndAccesskey('p-logo') ?>></a>
-      </div>
       <script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
 
 <?php
@@ -345,53 +348,47 @@ class WikiJpmozTemplate extends QuickTemplate {
 
     </div><!-- end of the left (by default at least) column -->
     <div class="visualClear"></div>
-      <div id="footer">
-<?php
-    if($this->data['poweredbyico']) { ?>
-        <div id="f-poweredbyico"><?php $this->html('poweredbyico') ?></div>
-<?php   }
-    if($this->data['copyrightico']) { ?>
-        <div id="f-copyrightico"><?php $this->html('copyrightico') ?></div>
-<?php  }
-
-    // Generate additional footer links
-    $footerlinks = array(
-      'lastmod', 'viewcount', 'numberofwatchingusers', 'credits', 'copyright',
-      'privacy', 'about', 'disclaimer', 'tagline',
-    );
-    $validFooterLinks = array();
-    foreach( $footerlinks as $aLink ) {
-      if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
-        $validFooterLinks[] = $aLink;
+    <div id="footer"><?php
+      if($this->data['poweredbyico']) { ?>
+        <div id="f-poweredbyico"><?php $this->html('poweredbyico') ?></div><?php
       }
-    }
-    if ( count( $validFooterLinks ) > 0 ) {
-?>      <ul id="f-list">
-<?php
-      foreach( $validFooterLinks as $aLink ) {
+      if($this->data['copyrightico']) { ?>
+        <div id="f-copyrightico"><?php $this->html('copyrightico') ?></div><?php
+      }
+      // Generate additional footer links
+      $footerlinks = array(
+        'lastmod', 'viewcount', 'numberofwatchingusers', 'credits', 'copyright',
+        'privacy', 'about', 'disclaimer', 'tagline',
+      );
+      $validFooterLinks = array();
+      foreach( $footerlinks as $aLink ) {
         if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
-?>          <li id="<?php echo$aLink?>"><?php $this->html($aLink) ?></li>
-<?php       }
+          $validFooterLinks[] = $aLink;
+        }
       }
-?>
-      </ul>
-<?php  }
-?>
+      if ( count( $validFooterLinks ) > 0 ) {  ?>
+        <ul id="f-list"><?php
+        foreach( $validFooterLinks as $aLink ) {
+          if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) { ?>
+            <li id="<?php echo$aLink?>"><?php $this->html($aLink) ?></li><?php
+          }
+        }  ?>
+        </ul><?php
+      }  ?>
     </div>
-</div>
+  </div>
+
 <?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>
 <?php $this->html('reporttime') ?>
-<?php if ( $this->data['debug'] ): ?>
 <!-- Debug output:
-<?php $this->text( 'debug' ); ?>
-
+<?php  if ( $this->data['debug'] ): $this->text( 'debug' ); endif;  ?>
 -->
-<?php endif; ?>
 </body></html>
 
 
 <?php
   wfRestoreWarnings();
+
   } // end of execute() method
 
 
