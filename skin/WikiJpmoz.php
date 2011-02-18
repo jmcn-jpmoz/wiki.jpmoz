@@ -17,7 +17,7 @@ class SkinWikiJpmoz extends SkinTemplate {
     parent::setupSkinUserCss( $out );
 
     // Append to the default screen common & print styles...
-    $out->addStyle( 'monobook/main.css', 'screen' );
+    $out->addStyle( 'wikijpmoz/main.css', 'screen' );
     if( $wgHandheldStyle ) {
       // Currently in testing... try 'chick/main.css'
       $out->addStyle( $wgHandheldStyle, 'handheld' );
