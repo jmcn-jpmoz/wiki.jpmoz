@@ -38,16 +38,20 @@ div#content-header h2 {
   color: black;
 }
 #bodyContent {
-  margin: 2.8em 0 0 5.0em;
-  padding: 0 1em 1em 1em;
+  margin-left: 204px;
+  margin-right: 200px;
+  padding: 1em;
   position: relative;
   z-index: 2;
-  border: 1px solid #aaa;
-  border-right: none;
+  border: 2px dotted #FFA500;
+  overflow: hidden;
   line-height: 1.5em;
 }
 #column-one {
-  padding-top: 160px;
+  float: left;
+  padding-top: 10px;
+  overflow: hidden;
+  width: 175px;
 }
 
 
