@@ -104,18 +104,22 @@ class WikiJpmozTemplate extends QuickTemplate {
 <!--  TOP MENU BAR  -->
 
 <div class="menuBar">
+<!--
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'fileMenu');"
     onmouseover="buttonMouseover(event, 'fileMenu');" >File</a>
+-->
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'editMenu');"
     onmouseover="buttonMouseover(event, 'editMenu');">編集</a>
+<!--
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'viewMenu');"
     onmouseover="buttonMouseover(event, 'viewMenu');">View</a>
+-->
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'toolsMenu');"
@@ -127,7 +131,7 @@ class WikiJpmozTemplate extends QuickTemplate {
   <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'helpMenu');"
-    onmouseover="buttonMouseover(event, 'helpMenu');">Help</a>
+    onmouseover="buttonMouseover(event, 'helpMenu');">ヘルプ</a>
 
 
   <form action="<?php $this->text('wgScript') ?>" id="menuSearchform">
@@ -241,6 +245,9 @@ class WikiJpmozTemplate extends QuickTemplate {
   ?>
 </div>
 
+<div id="helpMenu" class="menu" onmouseover="menuMouseover(event)">
+  <a href="/Help:About" class="menuItem">このサイトについて</a>
+</div>
 
 <!--
 
