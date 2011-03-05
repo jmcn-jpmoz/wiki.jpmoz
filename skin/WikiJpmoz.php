@@ -365,10 +365,10 @@ class WikiJpmozTemplate extends QuickTemplate {
           }
           ?></li><?php
         }
-        if (( isset($this->data['copyright']) && $this->data['copyright']) { ?>
+        if ( isset($this->data['copyright']) && $this->data['copyright']) { ?>
             <li id="copyright"><?php $this->html('copyright') ?></li><?php
         }
-        if (( isset($this->data['about']) && $this->data['about']) { ?>
+        if ( isset($this->data['about']) && $this->data['about']) { ?>
             <li id="copyright"><?php $this->html('about') ?></li><?php
         }
       ?></ul><?php
