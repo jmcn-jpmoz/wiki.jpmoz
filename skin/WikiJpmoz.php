@@ -144,7 +144,7 @@ class WikiJpmozTemplate extends QuickTemplate {
   </form>
 
   <span class="menuRight">
-    <a href="http://twitter.com/home?status=http:%3A%2F%2Fwiki.jpmoz.net/%20%23mozjpwiki%20wiki@jpmoz%20-%20<?php echo htmlspecialchars($this->text('title')) ?>" target="_blank" style="border: medium none;">
+    <a href="http://twitter.com/home?status=http%3A%2F%2Fwiki.jpmoz.net/%20%23mozjpwiki%20wiki@jpmoz%20-%20<?php echo htmlspecialchars($this->text('title')) ?>" target="_blank" style="border: medium none;">
       <img id="menuTweet" title="このwikiページについてTwitterでつぶやく" 
         src="<?php $this->text('stylepath' ) ?>/wikijpmoz/tweet.png" style="border: medium none; vertical-align: top;">
     </a>
