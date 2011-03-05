@@ -369,9 +369,9 @@ class WikiJpmozTemplate extends QuickTemplate {
             <li id="copyright"><?php $this->html('copyright') ?></li><?php
         }
         if ( isset($this->data['about']) && $this->data['about']) { ?>
-            <li id="copyright"><?php $this->html('about') ?></li><?php
+            <li id="about"><?php $this->html('about') ?></li><?php
         }
-      ?></ul><?php
+      ?></ul>
     </div>
   </div>
   </div>
