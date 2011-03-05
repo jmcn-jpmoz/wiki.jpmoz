@@ -372,29 +372,6 @@ class WikiJpmozTemplate extends QuickTemplate {
             <li id="copyright"><?php $this->html('about') ?></li><?php
         }
       ?></ul><?php
-            
-      // Generate additional footer links
-      $footerlinks = array(
-        'lastmod', 'viewcount', 'numberofwatchingusers', 'credits', 'copyright',
-        'about', 'tagline',
-      );
-      $validFooterLinks = array();
-      foreach( $footerlinks as $aLink ) {
-        if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
-          $validFooterLinks[] = $aLink;
-        }
-      }
-      if ( count( $validFooterLinks ) > 0 ) {  ?>
-        <ul id="f-list"><?php
-        foreach( $validFooterLinks as $aLink ) {
-          if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) { ?>
-            <li id="<?php echo$aLink?>"><?php $this->html($aLink) ?></li><?php
-          }
-        }  ?>
-        </ul><?php
-      }  ?>
-
-
     </div>
   </div>
   </div>
