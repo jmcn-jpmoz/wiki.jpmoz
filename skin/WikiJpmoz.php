@@ -310,7 +310,7 @@ class WikiJpmozTemplate extends QuickTemplate {
        href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"
        <?php echo $skin->tooltipAndAccesskey('p-logo') ?>
        id="toplogo"></a>
-    <h1>　　　　<?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
     <?php if($this->data['sitenotice']) { ?>
       <h2 id="siteNotice"><?php $this->html('sitenotice') ?></h2>
     <?php } ?>
