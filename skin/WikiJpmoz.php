@@ -353,6 +353,26 @@ class WikiJpmozTemplate extends QuickTemplate {
       if($this->data['copyrightico']) { ?>
         <div id="f-copyrightico"><?php $this->html('copyrightico') ?></div><?php
       }
+      ?><ul id="f-list"><?php
+        if (( isset($this->data['lastmod']) && $this->data['lastmod']) ||
+            ( isset($this->data['viewcount']) && $this->data['viewcount'])) {
+          ?><li id="viewcount"><?php
+          if ( isset($this->data['lastmod']) && $this->data['lastmod']) {
+            ?><?php $this->html('lastmod') ?><?php
+          }
+          if ( isset($this->data['viewcount']) && $this->data['viewcount']) {
+            ?><?php $this->html('viewcount') ?><?php
+          }
+          ?></li><?php
+        }
+        if (( isset($this->data['copyright']) && $this->data['copyright']) { ?>
+            <li id="copyright"><?php $this->html('copyright') ?></li><?php
+        }
+        if (( isset($this->data['about']) && $this->data['about']) { ?>
+            <li id="copyright"><?php $this->html('about') ?></li><?php
+        }
+      ?></ul><?php
+            
       // Generate additional footer links
       $footerlinks = array(
         'lastmod', 'viewcount', 'numberofwatchingusers', 'credits', 'copyright',
@@ -373,6 +393,8 @@ class WikiJpmozTemplate extends QuickTemplate {
         }  ?>
         </ul><?php
       }  ?>
+
+
     </div>
   </div>
   </div>
